@@ -51,7 +51,7 @@ function sampleGrid() {
       "FALSE",
       "TRUE",
       "FALSE",
-      "10",
+      "1,5",
       "PROFEMIGR",
       "5",
       "2",
@@ -75,14 +75,14 @@ describe("cellBool / cellNum", () => {
 });
 
 describe("parseMigraineRows", () => {
-  it("maps Sheet rows to MigraineRow (minutes, slash dates)", () => {
+  it("maps Sheet rows to MigraineRow (durée en h, slash dates)", () => {
     const rows = parseMigraineRows(sampleGrid());
     expect(rows).toHaveLength(1);
     expect(rows[0]).toMatchObject({
       date: "26/03",
       stress: true,
       saitPas: true,
-      dureeMinutes: 10,
+      dureeHeures: 1.5,
       medicaments: "PROFEMIGR",
       intensiteMigr: 5,
       intensiteOs: 2,

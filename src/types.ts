@@ -16,8 +16,8 @@ export type MigraineRow = {
   ouie: boolean;
   faiblesseMusc: boolean;
   brainFog: boolean;
-  /** Durée en minutes (comme dans le tableur). */
-  dureeMinutes: number | null;
+  /** Durée en heures (valeur saisie dans la colonne durée du tableur). */
+  dureeHeures: number | null;
   medicaments: string;
   intensiteMigr: number;
   intensiteOs: number;

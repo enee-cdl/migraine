@@ -83,9 +83,9 @@ function splitMedicaments(s: string): string[] {
     .filter(Boolean);
 }
 
-function minutesToHours(m: number | null): number | null {
-  if (m == null || !Number.isFinite(m)) return null;
-  return +(m / 60).toFixed(1);
+function roundHours(h: number | null): number | null {
+  if (h == null || !Number.isFinite(h)) return null;
+  return +h.toFixed(1);
 }
 
 function StatCard({
@@ -212,9 +212,9 @@ export default function MigraineDashboard({
             rawData.reduce((s, d) => s + d.intensiteMigr, 0) / total
           ).toFixed(1)
         : "0";
-    const withDur = rawData.filter((d) => d.dureeMinutes != null);
+    const withDur = rawData.filter((d) => d.dureeHeures != null);
     const hoursList = withDur
-      .map((d) => minutesToHours(d.dureeMinutes))
+      .map((d) => roundHours(d.dureeHeures))
       .filter((h): h is number => h != null);
     const avgDureeHoursVal =
       hoursList.length > 0
@@ -253,7 +253,7 @@ export default function MigraineDashboard({
       date: d.date,
       "Intensité migraine": d.intensiteMigr,
       "Intensité osseuse": d.intensiteOs,
-      "Durée (h)": minutesToHours(d.dureeMinutes),
+      "Durée (h)": roundHours(d.dureeHeures),
       "Nb déclencheurs": triggerKeys.filter((k) => d[k]).length,
       "Nb symptômes": symptomKeys.filter((k) => d[k]).length,
     }));
@@ -417,7 +417,7 @@ export default function MigraineDashboard({
               sub={
                 maxDureeHours === "—"
                   ? undefined
-                  : `max : ${maxDureeHours} h (depuis durée saisie en min)`
+                  : `max : ${maxDureeHours} h`
               }
               color={COLORS.duree}
             />
