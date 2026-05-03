@@ -329,7 +329,11 @@ export default function MigraineDashboard({
         minHeight: "100vh",
         color: COLORS.text,
         fontFamily: "'Helvetica Neue', Arial, sans-serif",
-        padding: "28px 20px",
+        padding: "clamp(24px, 3vw, 40px) clamp(18px, 4vw, 48px)",
+        width: "100%",
+        maxWidth: 1600,
+        margin: "0 auto",
+        boxSizing: "border-box",
       }}
     >
       <div style={{ marginBottom: 28 }}>
@@ -435,7 +439,8 @@ export default function MigraineDashboard({
             }}
           >
             {sectionTitle("Intensité des crises dans le temps")}
-            <ResponsiveContainer width="100%" height={180}>
+            <div className="migraine-chart-slot migraine-chart-slot--180">
+              <ResponsiveContainer width="100%" height="100%">
               <LineChart
                 data={timeline}
                 margin={{ top: 4, right: 8, left: -20, bottom: 0 }}
@@ -467,6 +472,7 @@ export default function MigraineDashboard({
                 />
               </LineChart>
             </ResponsiveContainer>
+            </div>
           </div>
 
           <div
@@ -487,7 +493,8 @@ export default function MigraineDashboard({
               }}
             >
               {sectionTitle("Durée des crises (heures)")}
-              <ResponsiveContainer width="100%" height={150}>
+              <div className="migraine-chart-slot migraine-chart-slot--150">
+              <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   data={timeline}
                   margin={{ top: 0, right: 8, left: -20, bottom: 0 }}
@@ -513,6 +520,7 @@ export default function MigraineDashboard({
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
+              </div>
             </div>
 
             <div
@@ -574,7 +582,8 @@ export default function MigraineDashboard({
             }}
           >
             {sectionTitle("Intensité migraine & douleur osseuse")}
-            <ResponsiveContainer width="100%" height={220}>
+            <div className="migraine-chart-slot migraine-chart-slot--220">
+            <ResponsiveContainer width="100%" height="100%">
               <LineChart
                 data={timeline}
                 margin={{ top: 4, right: 8, left: -20, bottom: 0 }}
@@ -610,6 +619,7 @@ export default function MigraineDashboard({
                 />
               </LineChart>
             </ResponsiveContainer>
+            </div>
           </div>
 
           <div
@@ -621,7 +631,8 @@ export default function MigraineDashboard({
             }}
           >
             {sectionTitle("Durée des crises (heures)")}
-            <ResponsiveContainer width="100%" height={200}>
+            <div className="migraine-chart-slot migraine-chart-slot--200">
+            <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={timeline}
                 margin={{ top: 0, right: 8, left: -20, bottom: 0 }}
@@ -647,6 +658,7 @@ export default function MigraineDashboard({
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
+            </div>
             <div
               style={{
                 display: "flex",
@@ -673,7 +685,8 @@ export default function MigraineDashboard({
             }}
           >
             {sectionTitle("Nombre de déclencheurs & symptômes par crise")}
-            <ResponsiveContainer width="100%" height={180}>
+            <div className="migraine-chart-slot migraine-chart-slot--180">
+            <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={timeline}
                 margin={{ top: 0, right: 8, left: -20, bottom: 0 }}
@@ -700,6 +713,7 @@ export default function MigraineDashboard({
                 />
               </BarChart>
             </ResponsiveContainer>
+            </div>
           </div>
         </div>
       )}
@@ -715,7 +729,8 @@ export default function MigraineDashboard({
             }}
           >
             {sectionTitle("Fréquence des déclencheurs identifiés")}
-            <ResponsiveContainer width="100%" height={220}>
+            <div className="migraine-chart-slot migraine-chart-slot--220">
+            <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={triggerFreq}
                 layout="vertical"
@@ -751,6 +766,7 @@ export default function MigraineDashboard({
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
+            </div>
           </div>
 
           <div
@@ -855,8 +871,9 @@ export default function MigraineDashboard({
               }}
             >
               {sectionTitle("Profil de symptômes (radar)")}
-              <ResponsiveContainer width="100%" height={260}>
-                <RadarChart data={radarData} outerRadius={90}>
+              <div className="migraine-chart-slot migraine-chart-slot--260">
+              <ResponsiveContainer width="100%" height="100%">
+                <RadarChart data={radarData} outerRadius="90%">
                   <PolarGrid stroke="#252b38" />
                   <PolarAngleAxis
                     dataKey="subject"
@@ -872,6 +889,7 @@ export default function MigraineDashboard({
                   />
                 </RadarChart>
               </ResponsiveContainer>
+              </div>
             </div>
 
             <div
@@ -936,7 +954,8 @@ export default function MigraineDashboard({
             }}
           >
             {sectionTitle("Présence de nausées & vomissements par crise")}
-            <ResponsiveContainer width="100%" height={140}>
+            <div className="migraine-chart-slot migraine-chart-slot--140">
+            <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={rawData.map((d) => ({
                   date: d.date,
@@ -961,6 +980,7 @@ export default function MigraineDashboard({
                 <Bar dataKey="Brain Fog" stackId="c" fill="#7a5ce0" />
               </BarChart>
             </ResponsiveContainer>
+            </div>
           </div>
         </div>
       )}
@@ -979,7 +999,8 @@ export default function MigraineDashboard({
               }}
             >
               {sectionTitle("Médicaments utilisés")}
-              <ResponsiveContainer width="100%" height={220}>
+              <div className="migraine-chart-slot migraine-chart-slot--220">
+              <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     data={medData}
@@ -1011,6 +1032,7 @@ export default function MigraineDashboard({
                   <Tooltip />
                 </PieChart>
               </ResponsiveContainer>
+              </div>
             </div>
 
             <div

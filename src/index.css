@@ -4,6 +4,61 @@
   box-sizing: border-box;
 }
 
+html {
+  background: #0f1117;
+}
+
 body {
   margin: 0;
+  min-height: 100vh;
+  background: #0f1117;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Recharts : hauteur du parent explicite ; plus grand sur écran large */
+.migraine-chart-slot {
+  width: 100%;
+}
+
+.migraine-chart-slot--180 {
+  height: 180px;
+}
+.migraine-chart-slot--150 {
+  height: 150px;
+}
+.migraine-chart-slot--200 {
+  height: 200px;
+}
+.migraine-chart-slot--220 {
+  height: 220px;
+}
+.migraine-chart-slot--260 {
+  height: 260px;
+}
+.migraine-chart-slot--140 {
+  height: 140px;
+}
+
+@media (min-width: 1024px) {
+  .migraine-chart-slot--180 {
+    height: 300px;
+  }
+  .migraine-chart-slot--150 {
+    height: 260px;
+  }
+  .migraine-chart-slot--200 {
+    height: 320px;
+  }
+  .migraine-chart-slot--220 {
+    height: 340px;
+  }
+  .migraine-chart-slot--260 {
+    height: 400px;
+  }
+  .migraine-chart-slot--140 {
+    height: 220px;
+  }
 }

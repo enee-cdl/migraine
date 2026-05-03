@@ -68,14 +68,18 @@ export default function App() {
           minHeight: "100vh",
           background: COLORS.bg,
           color: COLORS.text,
-          padding: 24,
+          padding: "clamp(24px, 4vw, 48px) clamp(20px, 5vw, 72px)",
           fontFamily: "system-ui, sans-serif",
-          maxWidth: 640,
+          width: "100%",
+          maxWidth: 1200,
           margin: "0 auto",
+          boxSizing: "border-box",
         }}
       >
-        <h1 style={{ fontSize: 20, marginTop: 0 }}>Impossible de charger la feuille</h1>
-        <p style={{ color: COLORS.muted, lineHeight: 1.5 }}>{error}</p>
+        <h1 style={{ fontSize: "clamp(1.25rem, 2vw, 1.75rem)", marginTop: 0 }}>
+          Impossible de charger la feuille
+        </h1>
+        <p style={{ color: COLORS.muted, lineHeight: 1.6, maxWidth: "72ch" }}>{error}</p>
         <button
           type="button"
           onClick={() => void load()}
@@ -103,8 +107,12 @@ export default function App() {
           minHeight: "100vh",
           background: COLORS.bg,
           color: COLORS.text,
-          padding: 24,
+          padding: "clamp(24px, 4vw, 48px) clamp(20px, 5vw, 72px)",
           fontFamily: "system-ui, sans-serif",
+          width: "100%",
+          maxWidth: 1200,
+          margin: "0 auto",
+          boxSizing: "border-box",
         }}
       >
         <p>Aucune ligne de crise trouvée. Vérifiez la plage et les en-têtes du tableur.</p>
